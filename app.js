@@ -20,7 +20,9 @@ const readData = () => {
 const writeData = (data) => {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 };
-
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 app.get("/contacts", (req, res) => {
   const contacts = readData();
   res.json(contacts);
@@ -67,3 +69,4 @@ app.delete("/contacts/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
